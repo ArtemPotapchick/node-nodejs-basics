@@ -10,7 +10,7 @@ const create = async () => {
     if (!fs.existsSync(path.join(__dirname, 'files', 'fresh.txt'))) {
       await fsPromises.appendFile(path.join(__dirname, 'files', 'fresh.txt'), 'I am fresh and young');
     } else {
-      throw "FS operation failed";
+      throw new Error('FS operation failed')
     }
   } catch (e) {
     console.log(e);

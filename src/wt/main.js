@@ -8,7 +8,7 @@ const performCalculations = async () => {
   const __dirname = path.dirname(__filename);
   let num = 10;
   const cpuCount = os.cpus().length;
-  Promise.all(Array.from(Array(cpuCount), (x, i) => i).map(i =>
+  Promise.allSettled(Array.from(Array(cpuCount), (x, i) => i).map(i =>
     new Promise((resolve, reject) => {
       const worker = new Worker(path.join(__dirname, 'worker.js'), {
         workerData: num + i

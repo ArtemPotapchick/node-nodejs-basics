@@ -9,7 +9,7 @@ const remove = async () => {
   // Write your code here
   try {
     if (!fs.existsSync(path.join(__dirname, 'files', 'fileToRemove.txt'))) {
-      throw 'FS operation failed';
+      throw new Error('FS operation failed')
     }
     await fsPromises.unlink(path.join(__dirname, 'files', 'fileToRemove.txt'));
   } catch (e) {

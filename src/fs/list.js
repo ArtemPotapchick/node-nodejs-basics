@@ -8,7 +8,7 @@ const list = async () => {
 
   try {
     if (!fs.existsSync(path.join(__dirname, 'files'))){
-      throw 'FS operation failed';
+      throw new Error('FS operation failed')
     }
     fs.readdir(path.join(__dirname, 'files'), (err, files) => {
       files.forEach(file => {

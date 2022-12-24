@@ -4,7 +4,7 @@ const transform = async () => {
   process.stdin.setEncoding('utf-8');
   const reverseText = new Transform({
     transform(chunk, encoding, callback) {
-      callback(null,chunk.toString().split('').reverse().join(''))
+      callback(null,chunk.toString().split('').reverse().join('')+'\n')
     }
   })
   process.stdin.pipe(reverseText).pipe(process.stdout);

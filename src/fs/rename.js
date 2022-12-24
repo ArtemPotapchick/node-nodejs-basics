@@ -7,10 +7,10 @@ const rename = async () => {
   const __filename = fileURLToPath(import.meta.url);
   const __dirname = path.dirname(__filename);
   try {
-    if (!fs.existsSync(path.join(__dirname, 'files', 'wrongFilename.txt')) || fs.existsSync(path.join(__dirname, 'files', 'properFilename.txt'))) {
-      throw 'FS operation failed';
+    if (!fs.existsSync(path.join(__dirname, 'files', 'wrongFilename.txt')) || fs.existsSync(path.join(__dirname, 'files', 'properFilename.md'))) {
+      throw new Error('FS operation failed')
     }
-    await fsPromises.rename(path.join(__dirname, 'files', 'wrongFilename.txt'), path.join(__dirname, 'files', 'properFilename.txt'));
+    await fsPromises.rename(path.join(__dirname, 'files', 'wrongFilename.md'), path.join(__dirname, 'files', 'properFilename.txt'));
   } catch (e) {
     console.log(e);
   }

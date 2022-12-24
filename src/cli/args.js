@@ -3,7 +3,7 @@ const parseArgs = () => {
   let argvArr = [];
   process.argv.map((item, index) => {
     if (item.startsWith('--')) {
-      argvArr = [...argvArr, `${item} is ${process.argv[index + 1]}`];
+      argvArr = [...argvArr, `${item.slice(2)} is ${process.argv[index + 1]}`];
     }
   });
   console.log(argvArr.join(', '));

@@ -1,5 +1,6 @@
 import * as path from 'path';
 import * as fs from 'fs';
+import {copyFile} from 'fs/promises'
 import { fileURLToPath } from 'url';
 
 const copy = async () => {
@@ -13,7 +14,6 @@ const copy = async () => {
     if (isDirectory) {
       if (!fs.existsSync(dest)) {
         fs.mkdir(dest, { recursive: true }, (err) => {
-          console.log(err);
         });
       }
       fs.readdirSync(source).forEach(fileName => {
@@ -22,7 +22,7 @@ const copy = async () => {
     }
     else {
       if(!fs.existsSync(dest)){
-        fs.copyFileSync(source,dest)
+        copyFile(source,dest)
       }
     }
 
@@ -31,7 +31,7 @@ const copy = async () => {
     const sourceDir = path.join(__dirname, 'files');
     const destDir = path.join(__dirname, 'files_copy');
     if (!fs.existsSync(sourceDir) || fs.existsSync(destDir)) {
-      throw 'FS operation failed';
+      throw new Error('FS operation failed');
     }
     copyFiles(sourceDir, destDir);
   } catch (e) {
